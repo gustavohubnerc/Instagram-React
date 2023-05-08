@@ -11,8 +11,10 @@ const Post = (props) => {
     };
 
     const clickImage = () => {
-      setIsLiked(true);
-      setNumLikes((numberOfLikes) => numberOfLikes + 1);
+      if (!isLiked) {
+        setIsLiked(true);
+        setNumLikes((numberOfLikes) => numberOfLikes + 1);
+      }
     }
 
     return (
@@ -28,27 +30,28 @@ const Post = (props) => {
         </div>
         <div className="conteudo">
           <img 
-          data-test="post-image" 
-          onDoubleClick={clickImage}
-          src={props.postImage} 
-          alt={props.postText} />
+            data-test="post-image" 
+            onDoubleClick={clickImage}
+            src={props.postImage} 
+            alt={props.postText} 
+          />
         </div>
         <div className="fundo">
           <div className="acoes">
             <div>
-              <ion-icon data-test="like-post">
-                onClick{clickLike}
+              <ion-icon data-test="like-post"
+                onClick={clickLike}
                 class = {isLiked ? "red" : "black"}
                 name = {isLiked ? "heart" : "heart-outline"}
-              </ion-icon>
+                ></ion-icon>
               <ion-icon name="chatbubble-outline"></ion-icon>
               <ion-icon name="paper-plane-outline"></ion-icon>
             </div>
             <div>
-              <ion-icon data-test="save-post">
-                onClick{() => setIsSaved(!isSaved)}
+              <ion-icon data-test="save-post"
+                onClick={() => setIsSaved(!isSaved)}
                 name = {isSaved ? "bookmark" : "bookmark-outline"}
-              </ion-icon>
+              ></ion-icon>
             </div>
           </div>
           <div className="curtidas">
