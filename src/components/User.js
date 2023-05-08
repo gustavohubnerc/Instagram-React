@@ -19,12 +19,13 @@ const User = () => {
   return (
     <div className="usuario">
       <img
+        data-test="profile-image"
         onClick={clickImg}
         src={image}
         alt="imagem de perfil"
       />
       <div className="texto">
-        <span>
+        <span data-test="name">
           <strong>{name}</strong>
           <ion-icon
             data-test="edit-name"
